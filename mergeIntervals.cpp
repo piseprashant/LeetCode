@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+#include <vector>
+#include <algorithm>
+#include <iostream>
 using namespace std;
 static bool compare(const vector<int>& a, const vector<int>& b){
         return a[0]<b[0];
