@@ -1,0 +1,11 @@
+from math import factorial as fact
+
+class Solution:
+    def comb(n, r):
+        return fact(n) // (fact(r) * fact(n-r))
+    
+    def uniquePaths(self, m: int, n: int) -> int:
+        downStep = m - 1
+        rightSteps = n - 1
+        totalSteps = downStep + rightSteps
+        return comb(totalSteps, downStep)
