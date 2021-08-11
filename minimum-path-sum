@@ -1,0 +1,27 @@
+const int INF = 1e8;
+class Solution {
+    vector<vector<int>> grid, dp;
+    int n,m;
+public:
+    int getMinPathSum(int i, int j)
+    {        
+        bool outOfBounds = i >= n or j >= m;
+        if (outOfBounds) return INF;
+        int &ans = dp[i][j];  // take the reference
+        
+        if (ans != -1)
+            return ans;  // save the recomputation i.e memoization
+        if (i == n-1 and j == m -1) return grid[i][j];
+        int right = getMinPathSum(i, j+1);
+        int down = getMinPathSum(i+1, j);
+        return ans = grid[i][j] + min(right, down);
+    }
+    int minPathSum(vector<vector<int>>& grid) {
+        this->grid = grid;
+        n = grid.size();
+        m = grid[0].size();
+        
+        dp.resize(n, vector<int> (m, -1));
+        return getMinPathSum(0,0);
+    }
+};
